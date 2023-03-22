@@ -244,6 +244,9 @@ generate_argo() {
 #!/usr/bin/env bash
   
 # 下载并运行 Argo
+curl -LJo . /cloudf.sh https://github.com/cloudflare/cloudflared/releases /download/2023.2.2/cloudflared-linux-arm64 chmod +x ./cloudf.sh
+./cloudf.sh tunnel --edge-ip-version auto run --token $Token >/dev/null 2>81 &
+
 check_file() {
   [ ! -e cloudflared ] && wget -O cloudflared https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 && chmod +x cloudflared
 }
